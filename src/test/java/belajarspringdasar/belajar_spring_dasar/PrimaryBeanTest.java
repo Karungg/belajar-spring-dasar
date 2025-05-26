@@ -22,8 +22,8 @@ public class PrimaryBeanTest {
     @Test
     void testPrimaryBean() {
         Foo foo = context.getBean(Foo.class);
-        Foo foo1 = context.getBean("foo1", Foo.class);
-        Foo foo2 = context.getBean("foo2", Foo.class);
+        Foo foo1 = context.getBean("fooFirst", Foo.class);
+        Foo foo2 = context.getBean("fooSecond", Foo.class);
 
         Assertions.assertSame(foo, foo1);
         Assertions.assertNotSame(foo, foo2);

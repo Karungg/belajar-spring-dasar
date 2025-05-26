@@ -26,8 +26,8 @@ public class BeanTest {
 
     @Test
     void testGetBean() {
-        Foo foo1 = context.getBean("foo1", Foo.class);
-        Foo foo2 = context.getBean("foo1", Foo.class);
+        Foo foo1 = context.getBean("fooFirst", Foo.class);
+        Foo foo2 = context.getBean("fooFirst", Foo.class);
 
         Assertions.assertSame(foo1, foo2);
     }

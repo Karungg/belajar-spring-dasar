@@ -12,13 +12,13 @@ import lombok.extern.slf4j.Slf4j;
 public class BeanConfiguration {
 
     @Primary
-    @Bean
+    @Bean(value = "fooFirst")
     public Foo foo1() {
         log.info("Bean foo1 created");
         return new Foo();
     }
 
-    @Bean
+    @Bean(value = "fooSecond")
     public Foo foo2() {
         log.info("Bean foo2 created");
         return new Foo();
