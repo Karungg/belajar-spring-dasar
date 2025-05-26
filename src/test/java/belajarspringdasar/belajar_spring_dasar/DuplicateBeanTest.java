@@ -10,8 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import belajarspringdasar.belajar_spring_dasar.data.Foo;
 
 @SpringBootTest
-public class BeanTest {
-
+public class DuplicateBeanTest {
     private ApplicationContext context;
 
     @BeforeEach
@@ -20,15 +19,11 @@ public class BeanTest {
     }
 
     @Test
-    void testCreateBean() {
-        Assertions.assertNotNull(context);
-    }
-
-    @Test
-    void testGetBean() {
+    void testDuplicateBean() {
         Foo foo1 = context.getBean("foo1", Foo.class);
-        Foo foo2 = context.getBean("foo1", Foo.class);
+        Foo foo2 = context.getBean("foo2", Foo.class);
 
-        Assertions.assertSame(foo1, foo2);
+        Assertions.assertNotSame(foo1, foo2);
     }
+
 }
