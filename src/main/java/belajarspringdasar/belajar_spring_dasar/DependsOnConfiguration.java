@@ -3,6 +3,7 @@ package belajarspringdasar.belajar_spring_dasar;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Lazy;
 
 import belajarspringdasar.belajar_spring_dasar.data.Bar;
 import belajarspringdasar.belajar_spring_dasar.data.Foo;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Configuration
 public class DependsOnConfiguration {
+    @Lazy
     @Bean(value = "fooDepends")
     @DependsOn("barDepends")
     public Foo foo() {
