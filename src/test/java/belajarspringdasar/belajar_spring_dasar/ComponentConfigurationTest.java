@@ -7,10 +7,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import belajarspringdasar.belajar_spring_dasar.repository.ProductRepository;
 import belajarspringdasar.belajar_spring_dasar.service.ProductService;
 
 @SpringBootTest
-public class ComponentConfiguration {
+public class ComponentConfigurationTest {
     private ConfigurableApplicationContext context;
 
     @BeforeEach
@@ -24,5 +25,14 @@ public class ComponentConfiguration {
         ProductService product = context.getBean(ProductService.class);
 
         Assertions.assertNotNull(product);
+    }
+
+    @Test
+    void testConstructorDependency() {
+        ProductService productService = context.getBean(ProductService.class);
+        ProductRepository productRepository = context.getBean(ProductRepository.class);
+
+        Assertions.assertNotNull(productService);
+        Assertions.assertNotNull(productRepository);
     }
 }
