@@ -13,7 +13,9 @@ import belajarspringdasar.belajar_spring_dasar.repository.ProductRepository;
 import belajarspringdasar.belajar_spring_dasar.service.CategoryService;
 import belajarspringdasar.belajar_spring_dasar.service.CustomerService;
 import belajarspringdasar.belajar_spring_dasar.service.ProductService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @SpringBootTest
 public class ComponentConfigurationTest {
     private ConfigurableApplicationContext context;
@@ -53,10 +55,20 @@ public class ComponentConfigurationTest {
     @Test
     void testFieldDependency() {
         CustomerService customerService = context.getBean(CustomerService.class);
-        Assertions.assertNotNull(customerService.getCustomerRepository());
+        Assertions.assertNotNull(customerService.getNormalCustomerRepository());
 
         CustomerRepository customerRepository = context.getBean(CustomerRepository.class);
-        Assertions.assertSame(customerService.getCustomerRepository(), customerRepository);
+        Assertions.assertSame(customerService.getNormalCustomerRepository(), customerRepository);
 
+    }
+
+    @Test
+    void testQualifier() {
+        CustomerService customerService = context.getBean(CustomerService.class);
+
+        CustomerRepository normalCustomer = customerService.getNormalCustomerRepository();
+        CustomerRepository PremiumCustomer = customerService.getPremiumCustomerRepository();
+
+        Assertions.assertNotSame(normalCustomer, PremiumCustomer);
     }
 }
