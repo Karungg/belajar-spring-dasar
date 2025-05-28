@@ -7,7 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import belajarspringdasar.belajar_spring_dasar.repository.CategoryRepository;
 import belajarspringdasar.belajar_spring_dasar.repository.ProductRepository;
+import belajarspringdasar.belajar_spring_dasar.service.CategoryService;
 import belajarspringdasar.belajar_spring_dasar.service.ProductService;
 
 @SpringBootTest
@@ -34,5 +36,15 @@ public class ComponentConfigurationTest {
 
         Assertions.assertNotNull(productService);
         Assertions.assertNotNull(productRepository);
+    }
+
+    @Test
+    void testSetterDependency() {
+        CategoryService categoryService = context.getBean(CategoryService.class);
+        Assertions.assertNotNull(categoryService.getCategoryRepository());
+
+        CategoryRepository categoryRepository = context.getBean(CategoryRepository.class);
+        Assertions.assertSame(categoryService.getCategoryRepository(), categoryRepository);
+
     }
 }
