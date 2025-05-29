@@ -16,4 +16,9 @@ public class PaymentGatewayClientFactory implements FactoryBean<PaymentGatewayCl
         client.setPrivateKey("PRIVATE");
         return client;
     }
+
+    @Override
+    public Class<?> getObjectType() {
+        return PaymentGatewayClient.class;
+    }
 }
