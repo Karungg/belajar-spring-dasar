@@ -20,7 +20,7 @@ public class BeanPostProcessorTest {
     @Import({
             Car.class,
             IdGeneratorBeanPostProcessor.class,
-            PrefixIdGeneratorBeanPostProcessor.class
+            PrefixIdGeneratorBeanPostProcessor.class,
     })
     public static class TestConfiguration {
 
