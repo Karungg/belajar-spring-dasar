@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 import belajarspringdasar.belajar_spring_dasar.listener.LoginSuccessListener;
+import belajarspringdasar.belajar_spring_dasar.listener.UserListener;
 import belajarspringdasar.belajar_spring_dasar.service.UserService;
 
 @SpringBootTest
@@ -17,7 +18,8 @@ public class UserServiceTest {
     @Configuration
     @Import(value = {
             LoginSuccessListener.class,
-            UserService.class
+            UserService.class,
+            UserListener.class
     })
     public static class TestConfiguration {
     }
